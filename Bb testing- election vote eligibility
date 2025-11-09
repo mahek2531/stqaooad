@@ -1,0 +1,159 @@
+Problem Statement
+
+Election voting rules:
+
+
+
+| Age Group | Voting Status |
+
+| 0 to 17 | Not eligible |
+
+| 18 and above | Eligible |
+
+| Negative age | Not eligible (Invalid) |
+
+
+
+ Equivalence Classes
+
+
+
+Valid Classes:
+
+- VC1: Age 0 to 17 → Not eligible
+
+- VC2: Age 18 and above → Eligible
+
+
+
+Invalid Classes:
+
+- IC1: Age < 0 → Invalid/Not eligible
+
+- IC2: Age > 150 → Invalid (Unrealistic)
+
+- IC3: Non-numeric input → Invalid
+
+
+
+ Boundary Value Analysis
+
+
+
+Boundaries Identified:
+
+- Upper boundary of VC1: 17 years
+
+- Lower boundary of VC2: 18 years
+
+
+
+Boundary Values:
+
+- Just below 18: 17 years
+
+- At boundary 18: 18 years
+
+- Just above 18: 19 years
+
+
+
+Test Cases
+
+
+
+| Test Case ID | Age (years) | Expected Result | Test Type | Remarks |
+
+| TC1 | -10 | Not eligible | Boundary | Negative age (invalid) |
+
+| TC2 | -1 | Not eligible | Boundary | Just below zero |
+
+| TC3 | 0 | Not eligible | BVA | Newborn |
+
+| TC4 | 1 | Not eligible | EP | Infant |
+
+| TC5 | 10 | Not eligible | EP | Child |
+
+| TC6 | 15 | Not eligible | EP | Teenager |
+
+| TC7 | 16 | Not eligible | BVA | Just below boundary |
+
+| TC8 | 17 | Not eligible | BVA | Upper boundary VC1 |
+
+| TC9 | 18 | Eligible | BVA | Lower boundary VC2 (exact) |
+
+| TC10 | 19 | Eligible | BVA | Just above boundary |
+
+| TC11 | 25 | Eligible | EP | Young adult |
+
+| TC12 | 50 | Eligible | EP | Middle-aged |
+
+| TC13 | 75 | Eligible | EP | Senior citizen |
+
+| TC14 | 100 | Eligible | EP | Centenarian |
+
+| TC15 | 120 | Eligible | EP | Very old |
+
+| TC16 | 200 | Invalid/Eligible | Boundary | Unrealistic age |
+
+| TC17 | 17.9 | Not eligible | BVA | Decimal just below |
+
+| TC18 | 18.0 | Eligible | BVA | Decimal at boundary |
+
+| TC19 | 18.1 | Eligible | BVA | Decimal just above |
+
+| TC20 | XYZ | Error/Invalid | EP | Non-numeric |
+
+| TC21 | NULL | Error/Invalid | EP | Null input |
+
+| TC22 | " " | Error/Invalid | EP | Empty/space |
+
+
+
+ Decision Table
+
+
+
+| Condition | Rule 1 | Rule 2 | Rule 3 |
+
+| Age < 0 | Yes | No | No |
+
+| 0 ≤ Age ≤ 17 | No | Yes | No |
+
+| Age ≥ 18 | No | No | Yes |
+
+| Action | Not eligible (Invalid) | Not eligible | Eligible |
+
+
+
+ State Transition Diagram
+
+
+
+[Not Eligible] ------Age reaches 18------> [Eligible]
+
+     ^                                         |
+
+     |                                         |
+
+     +---------Age drops below 18--------------+
+
+                (Invalid scenario)
+
+
+
+ COMPARISON: BOUNDARY VALUE ANALYSIS vs EQUIVALENCE PARTITIONING
+
+| Aspect | Boundary Value Analysis | Equivalence Partitioning |
+
+| Focus | Boundaries between partitions | Representative values from partitions |
+
+| Test Cases | Tests at, just above, just below boundaries | Tests one value from each partition |
+
+| Coverage | Focuses on edge conditions | Focuses on typical conditions |
+
+| Defect Detection | Finds boundary-related errors | Finds errors in processing logic |
+
+| Number of Tests | More test cases | Fewer test cases |
+
+| Example (Age 18-60) | Tests: 17, 18, 19, 59, 60, 61 | Tests: 25 (one from range) |
