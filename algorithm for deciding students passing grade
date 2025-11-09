@@ -1,0 +1,257 @@
+WHITE BOX TESTING: CYCLOMATIC COMPLEXITY, BASIS PATH, AND CONTROL FLOW
+
+PROBLEM 1: STUDENT GRADE CLASSIFICATION
+Algorithm
+START
+INPUT percentage
+IF percentage >= 60 THEN
+ grade = "First Class"
+ PRINT "First Class with Distinction"
+ELSE IF percentage >= 50 AND percentage < 60 THEN
+ grade = "First Class"
+ PRINT "First Class"
+ELSE IF percentage >= 40 AND percentage < 50 THEN
+ grade = "Second Class"
+ PRINT "Second Class"
+ELSE IF percentage >= 35 AND percentage < 40 THEN
+ grade = "Pass"
+ PRINT "Pass Class"
+ELSE
+ grade = "Fail"
+ PRINT "Fail"
+END IF
+STOP
+Flow Chart
+[START]
+ |
+ v
+[Input percentage]
+ |
+ v
+= 60?>
+/   \
+YES   NO
+|     |
+v     v
+[First Class with Distinction] = 50?>
+     /   \
+   YES   NO
+   |     |
+   v     v
+  [First Class] = 40?>
+   |    /   \
+   |  YES   NO
+   |  |     |
+   |  v     v
+   | [Second Class] = 35?>
+   |    /   \
+   | YES   NO
+   | |     |
+   | v     v
+   | [Pass Class] [Fail]
+   |   |    |
+   --------+----/
+       |
+       v
+     [STOP]
+Control Flow Diagram (CFD)
+Nodes:
+1.	Start
+2.	Input percentage
+3.	Check percentage >= 60
+4.	Print "First Class with Distinction"
+5.	Check percentage >= 50
+6.	Print "First Class"
+7.	Check percentage >= 40
+8.	Print "Second Class"
+9.	Check percentage >= 35
+10.	Print "Pass Class"
+11.	Print "Fail"
+12.	Stop
+Edges:
+1 → 2
+2 → 3
+3 → 4 (True)
+3 → 5 (False)
+4 → 12
+5 → 6 (True)
+5 → 7 (False)
+6 → 12
+7 → 8 (True)
+7 → 9 (False)
+8 → 12
+9 → 10 (True)
+9 → 11 (False)
+10 → 12
+11 → 12
+Cyclomatic Complexity Calculation
+Method 1: Using Formula V(G) = E - N + 2
+Edges (E) = 14
+Nodes (N) = 12
+V(G) = 14 - 12 + 2 = 4
+Method 2: Using Decision Points V(G) = D + 1
+Decision points (D) = 4
+V(G) = 4 + 1 = 5
+Method 3: Using Regions
+Number of regions = 5
+V(G) = 5
+Independent Paths (Basis Path Testing)
+Path 1: 1 → 2 → 3 → 4 → 12 (percentage >= 60)
+Test Case: percentage = 65
+Expected Output: "First Class with Distinction"
+Path 2: 1 → 2 → 3 → 5 → 6 → 12 (50 <= percentage < 60)
+Test Case: percentage = 55
+Expected Output: "First Class"
+Path 3: 1 → 2 → 3 → 5 → 7 → 8 → 12 (40 <= percentage < 50)
+Test Case: percentage = 45
+Expected Output: "Second Class"
+Path 4: 1 → 2 → 3 → 5 → 7 → 9 → 10 → 12 (35 <= percentage < 40)
+Test Case: percentage = 37
+Expected Output: "Pass Class"
+Path 5: 1 → 2 → 3 → 5 → 7 → 9 → 11 → 12 (percentage < 35)
+Test Case: percentage = 30
+Expected Output: "Fail"
+Test Cases for Basis Path Coverage
+Test Case ID	Input (percentage)	Expected Output	Path Covered
+TC1	65	First Class with Distinction	Path 1
+TC2	55	First Class	Path 2
+TC3	45	Second Class	Path 3
+TC4	37	Pass Class	Path 4
+TC5	30	Fail	Path 5
+TC6	60	First Class with Distinction	Boundary
+TC7	50	First Class	Boundary
+TC8	40	Second Class	Boundary
+TC9	35	Pass Class	Boundary
+
+PROBLEM 2: ODD OR EVEN NUMBER
+Algorithm
+START
+INPUT number
+IF number % 2 == 0 THEN
+ PRINT "Even"
+ELSE
+ PRINT "Odd"
+END IF
+STOP
+Flow Chart
+[START]
+ |
+ v
+[Input number]
+ |
+ v
+<number % 2 == 0?>
+/   \
+YES   NO
+|    |
+v    v
+[Print "Even"] [Print "Odd"]
+ |    |
+ -------/
+  |
+  v
+ [STOP]
+Control Flow Diagram (CFD)
+Nodes:
+1.	Start
+2.	Input number
+3.	Check number % 2 == 0
+4.	Print "Even"
+5.	Print "Odd"
+6.	Stop
+Edges:
+1 → 2
+2 → 3
+3 → 4 (True)
+3 → 5 (False)
+4 → 6
+5 → 6
+Cyclomatic Complexity Calculation
+Method 1: V(G) = E - N + 2
+E = 6
+N = 6
+V(G) = 6 - 6 + 2 = 2
+Method 2: V(G) = D + 1
+D = 1
+V(G) = 2
+Independent Paths
+Path 1: 1 → 2 → 3 → 4 → 6 (number is even)
+Test Case: number = 10
+Expected Output: "Even"
+Path 2: 1 → 2 → 3 → 5 → 6 (number is odd)
+Test Case: number = 7
+Expected Output: "Odd"
+Test Cases
+Test Case ID	Input (number)	Expected Output	Path Covered
+TC1	10	Even	Path 1
+TC2	7	Odd	Path 2
+TC3	0	Even	Boundary
+TC4	-4	Even	Negative Even
+TC5	-5	Odd	Negative Odd
+TC6	2	Even	Smallest Even
+TC7	1	Odd	Smallest Odd
+
+PROBLEM 3: PRIME NUMBER CHECK
+Algorithm
+START
+INPUT number
+IF number <= 1 THEN
+ PRINT "Not Prime"
+ GOTO STOP
+END IF
+IF number == 2 THEN
+ PRINT "Prime"
+ GOTO STOP
+END IF
+IF number % 2 == 0 THEN
+ PRINT "Not Prime"
+ GOTO STOP
+END IF
+SET i = 3
+WHILE i * i <= number DO
+ IF number % i == 0 THEN
+  PRINT "Not Prime"
+  GOTO STOP
+ END IF
+ i = i + 2
+END WHILE
+PRINT "Prime"
+STOP
+Cyclomatic Complexity Calculation
+Method 1: V(G) = E - N + 2
+E = 17
+N = 15
+V(G) = 17 - 15 + 2 = 4
+Method 2: V(G) = D + 1
+D = 5
+V(G) = 6
+Independent Paths
+Path 1: number <= 1
+Test Case: 0 → Not Prime
+Path 2: number == 2 → Prime
+Path 3: number even → Not Prime
+Path 4: divisible by odd → Not Prime
+Path 5: prime (odd) → Prime
+Path 6: small prime → Prime
+Test Cases
+Test Case ID	Input	Expected Output	Path Covered	Reason
+TC1	0	Not Prime	Path 1	number <= 1
+TC2	1	Not Prime	Path 1	number <= 1
+TC3	-5	Not Prime	Path 1	Negative
+TC4	2	Prime	Path 2	Only even prime
+TC5	4	Not Prime	Path 3	Even composite
+TC6	9	Not Prime	Path 4	Odd composite (3²)
+TC7	15	Not Prime	Path 4	Odd composite
+TC8	7	Prime	Path 5	Odd prime
+TC9	11	Prime	Path 5	Odd prime
+TC10	3	Prime	Path 6	Smallest odd prime
+TC11	17	Prime	Path 5	Larger prime
+TC12	25	Not Prime	Path 4	Perfect square
+
+SUMMARY OF CYCLOMATIC COMPLEXITY
+Problem	Cyclomatic Complexity	Independent Paths	Test Cases Required
+Student Grade Classification	5	5	9
+Odd or Even	2	2	7
+Prime Number	6	6	12
+Note: Cyclomatic Complexity indicates the minimum number of test cases required to achieve basis path coverage and represents the complexity of the program.
+
