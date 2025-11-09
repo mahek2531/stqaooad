@@ -1,0 +1,66 @@
+Problem Statement
+
+A retail store provides discounts based on the total purchase amount according to the following scheme:
+
+Purchase Range (Rs)	Discount Percentage
+1000 – 5000	10%
+5001 – 10000	20%
+Above 10000	25%
+Equivalence Classes
+
+Valid Classes:
+
+Class ID	Range	Discount
+VC1	1000 – 5000	10%
+VC2	5001 – 10000	20%
+VC3	>10000	25%
+
+Invalid Classes:
+
+Class ID	Range / Condition	Result
+IC1	<1000	No Discount
+IC2	= 0	Invalid
+IC3	< 0	Invalid (Negative value)
+IC4	Non-numeric input	Invalid input
+Boundary Value Analysis (BVA)
+
+Boundaries Identified:
+
+Range	Lower Boundary	Upper Boundary
+VC1	1000	5000
+VC2	5001	10000
+VC3	10001	-
+
+Boundary Test Values:
+999, 1000, 1001, 4999, 5000, 5001, 9999, 10000, 10001
+
+Test Cases
+Test ID	Purchase Amount (Rs)	Expected Discount (%)	Expected Final Amount (Rs)	Expected Result	Test Type	Remarks
+TC1	0	0%	–	Invalid Input	Boundary	Zero value
+TC2	-500	0%	–	Invalid Input	Boundary	Negative value
+TC3	999	0%	999	No Discount	BVA	Just below valid range
+TC4	1000	10%	900	Valid	BVA	Lower boundary VC1
+TC5	1001	10%	900.90	Valid	BVA	Just above lower boundary
+TC6	3000	10%	2700	Valid	EP	Mid value VC1
+TC7	4999	10%	4499.10	Valid	BVA	Just below upper boundary VC1
+TC8	5000	10%	4500	Valid	BVA	Upper boundary VC1
+TC9	5001	20%	4000.80	Valid	BVA	Lower boundary VC2
+TC10	7500	20%	6000	Valid	EP	Mid value VC2
+TC11	9999	20%	7999.20	Valid	BVA	Just below upper boundary VC2
+TC12	10000	20%	8000	Valid	BVA	Upper boundary VC2
+TC13	10001	25%	7500.75	Valid	BVA	Lower boundary VC3
+TC14	15000	25%	11250	Valid	EP	Mid value VC3
+TC15	50000	25%	37500	Valid	EP	Large purchase amount
+TC16	"ABC"	–	–	Invalid Input	EP	Non-numeric
+TC17	2500.50	10%	2250.45	Valid	EP	Decimal amount
+Calculation Examples
+
+Example 1:
+Purchase = 5000
+→ Discount = 10% × 5000 = 500
+→ Final Amount = 5000 - 500 = 4500 Rs
+
+Example 2:
+Purchase = 10001
+→ Discount = 25% × 10001 = 2500.25
+→ Final Amount = 10001 - 2500.25 = 7500.75 Rs
