@@ -1,0 +1,502 @@
+# DEFECT TRACKING REPORT / BUG REPORT
+
+## PROJECT: MINI PROJECT - FOOD DELIVERY MOBILE APPLICATION
+
+**Report Generated:** November 09, 2025  
+**Testing Phase:** System Testing  
+**Test Director:** Test Manager  
+**Version:** 1.0
+
+---
+
+## DEFECT SUMMARY DASHBOARD
+
+| Metric | Count |
+|--------|-------|
+| Total Defects Logged | 15 |
+| Critical Defects | 3 |
+| High Priority Defects | 5 |
+| Medium Priority Defects | 4 |
+| Low Priority Defects | 3 |
+| Open Defects | 8 |
+| In Progress | 4 |
+| Fixed | 2 |
+| Closed | 1 |
+| Rejected | 0 |
+
+---
+
+## DEFECT STATUS BREAKDOWN
+
+| Status | Count | Percentage |
+|--------|-------|------------|
+| Open | 8 | 53.3% |
+| In Progress | 4 | 26.7% |
+| Fixed | 2 | 13.3% |
+| Closed | 1 | 6.7% |
+| **Total** | **15** | **100%** |
+
+---
+
+## DETAILED DEFECT TRACKING REPORT
+
+### DEFECT #1
+
+| Field | Details |
+|-------|---------|
+| **Defect ID** | BUG-001 |
+| **Title** | Application crashes when adding item to cart |
+| **Module** | Shopping Cart |
+| **Severity** | Critical |
+| **Priority** | P1 - Immediate |
+| **Status** | In Progress |
+| **Reported By** | Tester A |
+| **Reported Date** | 2025-11-05 |
+| **Assigned To** | Developer Team 1 |
+| **Environment** | Android 13, Samsung Galaxy S21 |
+| **Build Version** | 1.0.15 |
+| **Description** | When user clicks "Add to Cart" button for any menu item, the application crashes immediately and returns to home screen. No error message displayed. |
+| **Steps to Reproduce** | 1. Login to application<br>2. Browse restaurant menu<br>3. Select any item<br>4. Click "Add to Cart" button<br>5. Observe crash |
+| **Expected Result** | Item should be added to cart successfully and cart count should increase |
+| **Actual Result** | Application crashes and closes |
+| **Attachments** | Screenshot_crash.png, LogCat_error.txt |
+| **Root Cause** | Null pointer exception in cart service |
+| **Fix ETA** | 2025-11-10 |
+
+---
+
+### DEFECT #2
+
+| Field | Details |
+|-------|---------|
+| **Defect ID** | BUG-002 |
+| **Title** | Payment gateway timeout after 30 seconds |
+| **Module** | Payment |
+| **Severity** | Critical |
+| **Priority** | P1 - Immediate |
+| **Status** | Open |
+| **Reported By** | Tester B |
+| **Reported Date** | 2025-11-06 |
+| **Assigned To** | Payment Integration Team |
+| **Environment** | iOS 17, iPhone 14 |
+| **Build Version** | 1.0.15 |
+| **Description** | Payment gateway times out after 30 seconds without completing transaction. User loses cart items and order details. |
+| **Steps to Reproduce** | 1. Add items to cart<br>2. Proceed to checkout<br>3. Enter payment details<br>4. Wait 30 seconds without submitting<br>5. Attempt to complete payment |
+| **Expected Result** | Payment should process or show appropriate timeout message while preserving cart |
+| **Actual Result** | Gateway times out, cart cleared, no error handling |
+| **Attachments** | Payment_timeout_video.mp4 |
+| **Root Cause** | Under investigation |
+| **Fix ETA** | TBD |
+
+---
+
+### DEFECT #3
+
+| Field | Details |
+|-------|---------|
+| **Defect ID** | BUG-003 |
+| **Title** | User unable to login with correct credentials |
+| **Module** | Authentication |
+| **Severity** | Critical |
+| **Priority** | P1 - Immediate |
+| **Status** | Fixed |
+| **Reported By** | Tester C |
+| **Reported Date** | 2025-11-03 |
+| **Assigned To** | Backend Team |
+| **Environment** | All platforms |
+| **Build Version** | 1.0.14 |
+| **Description** | Users receive "Invalid credentials" error even when entering correct email and password. Affects approximately 30% of users. |
+| **Steps to Reproduce** | 1. Open login screen<br>2. Enter registered email: test@example.com<br>3. Enter correct password<br>4. Click Login |
+| **Expected Result** | User should login successfully |
+| **Actual Result** | Error message: "Invalid credentials" |
+| **Attachments** | Login_error_screenshot.png |
+| **Root Cause** | Case-sensitive email validation issue |
+| **Resolution** | Changed email validation to case-insensitive |
+| **Fixed In Version** | 1.0.16 |
+| **Fixed Date** | 2025-11-07 |
+| **Verified By** | Tester C |
+| **Verification Date** | 2025-11-08 |
+
+---
+
+### DEFECT #4
+
+| Field | Details |
+|-------|---------|
+| **Defect ID** | BUG-004 |
+| **Title** | GPS location not updating in real-time |
+| **Module** | Order Tracking |
+| **Severity** | High |
+| **Priority** | P2 - High |
+| **Status** | Open |
+| **Reported By** | Tester D |
+| **Reported Date** | 2025-11-06 |
+| **Assigned To** | Mobile Team |
+| **Environment** | Android 12, Multiple devices |
+| **Build Version** | 1.0.15 |
+| **Description** | Delivery person's location on map doesn't update in real-time. Updates only when app is reopened. |
+| **Steps to Reproduce** | 1. Place an order<br>2. Track delivery on map<br>3. Observe location updates<br>4. Wait for 5 minutes |
+| **Expected Result** | Location should update every 30 seconds |
+| **Actual Result** | Location remains static until app refresh |
+| **Attachments** | GPS_tracking_issue.mp4 |
+| **Root Cause** | Background service not running properly |
+| **Fix ETA** | 2025-11-12 |
+
+---
+
+### DEFECT #5
+
+| Field | Details |
+|-------|---------|
+| **Defect ID** | BUG-005 |
+| **Title** | Push notifications not received |
+| **Module** | Notifications |
+| **Severity** | High |
+| **Priority** | P2 - High |
+| **Status** | In Progress |
+| **Reported By** | Tester A |
+| **Reported Date** | 2025-11-05 |
+| **Assigned To** | Backend Team |
+| **Environment** | iOS 16, iPhone 13 |
+| **Build Version** | 1.0.15 |
+| **Description** | Users not receiving push notifications for order status updates, promotional offers, or delivery updates. |
+| **Steps to Reproduce** | 1. Enable notifications in settings<br>2. Place an order<br>3. Wait for status updates<br>4. Check notifications |
+| **Expected Result** | Receive notifications at each order stage |
+| **Actual Result** | No notifications received |
+| **Attachments** | Notification_settings.png |
+| **Root Cause** | FCM token not registered properly |
+| **Fix ETA** | 2025-11-11 |
+
+---
+
+### DEFECT #6
+
+| Field | Details |
+|-------|---------|
+| **Defect ID** | BUG-006 |
+| **Title** | Restaurant search returns no results |
+| **Module** | Search |
+| **Severity** | High |
+| **Priority** | P2 - High |
+| **Status** | Open |
+| **Reported By** | Tester B |
+| **Reported Date** | 2025-11-07 |
+| **Assigned To** | Search Team |
+| **Environment** | Android & iOS |
+| **Build Version** | 1.0.15 |
+| **Description** | Searching for restaurants by cuisine type (e.g., "Italian", "Chinese") returns zero results even when such restaurants exist. |
+| **Steps to Reproduce** | 1. Go to home screen<br>2. Enter "Italian" in search bar<br>3. Click search |
+| **Expected Result** | Display all Italian restaurants |
+| **Actual Result** | "No restaurants found" message |
+| **Attachments** | Search_issue.png |
+| **Root Cause** | Under investigation |
+| **Fix ETA** | 2025-11-13 |
+
+---
+
+### DEFECT #7
+
+| Field | Details |
+|-------|---------|
+| **Defect ID** | BUG-007 |
+| **Title** | Cart total shows incorrect amount |
+| **Module** | Shopping Cart |
+| **Severity** | High |
+| **Priority** | P2 - High |
+| **Status** | In Progress |
+| **Reported By** | Tester C |
+| **Reported Date** | 2025-11-06 |
+| **Assigned To** | Developer Team 2 |
+| **Environment** | All platforms |
+| **Build Version** | 1.0.15 |
+| **Description** | When adding multiple items to cart, the total amount calculation is incorrect. Taxes and delivery charges not properly calculated. |
+| **Steps to Reproduce** | 1. Add Item A (₹200)<br>2. Add Item B (₹300)<br>3. Check cart total |
+| **Expected Result** | Total = ₹500 + tax + delivery |
+| **Actual Result** | Total shows ₹480 (incorrect) |
+| **Attachments** | Cart_calculation_error.png |
+| **Root Cause** | Discount logic interfering with base calculation |
+| **Fix ETA** | 2025-11-10 |
+
+---
+
+### DEFECT #8
+
+| Field | Details |
+|-------|---------|
+| **Defect ID** | BUG-008 |
+| **Title** | Unable to apply promo code |
+| **Module** | Promotions |
+| **Severity** | High |
+| **Priority** | P2 - High |
+| **Status** | Open |
+| **Reported By** | Tester D |
+| **Reported Date** | 2025-11-08 |
+| **Assigned To** | Promotions Team |
+| **Environment** | iOS 17 |
+| **Build Version** | 1.0.15 |
+| **Description** | Valid promo codes show "Invalid code" error when applied at checkout. |
+| **Steps to Reproduce** | 1. Add items to cart<br>2. Proceed to checkout<br>3. Enter promo code: FIRST50<br>4. Click Apply |
+| **Expected Result** | Discount applied successfully |
+| **Actual Result** | Error: "Invalid promo code" |
+| **Attachments** | Promo_code_error.png |
+| **Root Cause** | Under investigation |
+| **Fix ETA** | 2025-11-12 |
+
+---
+
+### DEFECT #9
+
+| Field | Details |
+|-------|---------|
+| **Defect ID** | BUG-009 |
+| **Title** | Images not loading on menu page |
+| **Module** | UI/UX |
+| **Severity** | Medium |
+| **Priority** | P3 - Medium |
+| **Status** | Open |
+| **Reported By** | Tester A |
+| **Reported Date** | 2025-11-07 |
+| **Assigned To** | Frontend Team |
+| **Environment** | Android 11, Slow 3G |
+| **Build Version** | 1.0.15 |
+| **Description** | Food item images take very long to load or show placeholder forever on slow networks. |
+| **Steps to Reproduce** | 1. Switch to slow 3G network<br>2. Browse restaurant menu<br>3. Observe image loading |
+| **Expected Result** | Images should load within 5 seconds or show error |
+| **Actual Result** | Images don't load, placeholder remains |
+| **Attachments** | Image_loading_issue.png |
+| **Root Cause** | No image optimization, large file sizes |
+| **Fix ETA** | 2025-11-14 |
+
+---
+
+### DEFECT #10
+
+| Field | Details |
+|-------|---------|
+| **Defect ID** | BUG-010 |
+| **Title** | Logout button not working |
+| **Module** | Authentication |
+| **Severity** | Medium |
+| **Priority** | P3 - Medium |
+| **Status** | Open |
+| **Reported By** | Tester B |
+| **Reported Date** | 2025-11-08 |
+| **Assigned To** | Mobile Team |
+| **Environment** | Android 13 |
+| **Build Version** | 1.0.15 |
+| **Description** | Clicking logout button does nothing. User remains logged in. |
+| **Steps to Reproduce** | 1. Login to app<br>2. Go to profile<br>3. Click Logout button |
+| **Expected Result** | User logged out, redirected to login screen |
+| **Actual Result** | Nothing happens, user remains logged in |
+| **Attachments** | Logout_issue_video.mp4 |
+| **Root Cause** | Event listener not attached properly |
+| **Fix ETA** | 2025-11-11 |
+
+---
+
+### DEFECT #11
+
+| Field | Details |
+|-------|---------|
+| **Defect ID** | BUG-011 |
+| **Title** | Order history shows duplicate entries |
+| **Module** | Order Management |
+| **Severity** | Medium |
+| **Priority** | P3 - Medium |
+| **Status** | In Progress |
+| **Reported By** | Tester C |
+| **Reported Date** | 2025-11-06 |
+| **Assigned To** | Backend Team |
+| **Environment** | All platforms |
+| **Build Version** | 1.0.15 |
+| **Description** | Order history page displays duplicate entries for same order. |
+| **Steps to Reproduce** | 1. Place an order<br>2. Navigate to Order History<br>3. Observe duplicate entries |
+| **Expected Result** | Each order shown once |
+| **Actual Result** | Orders duplicated 2-3 times |
+| **Attachments** | Duplicate_orders.png |
+| **Root Cause** | Database query returning duplicates |
+| **Fix ETA** | 2025-11-12 |
+
+---
+
+### DEFECT #12
+
+| Field | Details |
+|-------|---------|
+| **Defect ID** | BUG-012 |
+| **Title** | Rating and review not submitting |
+| **Module** | Reviews |
+| **Severity** | Medium |
+| **Priority** | P3 - Medium |
+| **Status** | Open |
+| **Reported By** | Tester D |
+| **Reported Date** | 2025-11-09 |
+| **Assigned To** | Reviews Team |
+| **Environment** | iOS 16 |
+| **Build Version** | 1.0.15 |
+| **Description** | After completing order, submitting rating and review shows loading indicator indefinitely. |
+| **Steps to Reproduce** | 1. Complete an order<br>2. Go to order details<br>3. Select 5 stars<br>4. Write review<br>5. Click Submit |
+| **Expected Result** | Review submitted successfully |
+| **Actual Result** | Loading indicator forever, review not saved |
+| **Attachments** | Review_submit_issue.png |
+| **Root Cause** | API endpoint timeout |
+| **Fix ETA** | 2025-11-13 |
+
+---
+
+### DEFECT #13
+
+| Field | Details |
+|-------|---------|
+| **Defect ID** | BUG-013 |
+| **Title** | App UI misaligned on tablet devices |
+| **Module** | UI/UX |
+| **Severity** | Low |
+| **Priority** | P4 - Low |
+| **Status** | Open |
+| **Reported By** | Tester A |
+| **Reported Date** | 2025-11-08 |
+| **Assigned To** | UI Team |
+| **Environment** | iPad Air, Android Tablet |
+| **Build Version** | 1.0.15 |
+| **Description** | UI elements overlap and buttons are misaligned on tablet screen sizes. |
+| **Steps to Reproduce** | 1. Open app on tablet<br>2. Browse any page |
+| **Expected Result** | Responsive layout for tablet |
+| **Actual Result** | UI elements overlapping |
+| **Attachments** | Tablet_UI_issue.png |
+| **Root Cause** | Missing tablet-specific layouts |
+| **Fix ETA** | 2025-11-20 |
+
+---
+
+### DEFECT #14
+
+| Field | Details |
+|-------|---------|
+| **Defect ID** | BUG-014 |
+| **Title** | Typo in Terms and Conditions |
+| **Module** | Content |
+| **Severity** | Low |
+| **Priority** | P4 - Low |
+| **Status** | Fixed |
+| **Reported By** | Tester B |
+| **Reported Date** | 2025-11-05 |
+| **Assigned To** | Content Team |
+| **Environment** | All platforms |
+| **Build Version** | 1.0.15 |
+| **Description** | Spelling error in Terms and Conditions page: "delivary" instead of "delivery". |
+| **Steps to Reproduce** | 1. Go to Settings<br>2. Open Terms and Conditions<br>3. Read section 3.2 |
+| **Expected Result** | Correct spelling |
+| **Actual Result** | Typo present |
+| **Attachments** | Typo_screenshot.png |
+| **Root Cause** | Content error |
+| **Resolution** | Corrected spelling |
+| **Fixed In Version** | 1.0.16 |
+| **Fixed Date** | 2025-11-06 |
+| **Status** | Closed |
+
+---
+
+### DEFECT #15
+
+| Field | Details |
+|-------|---------|
+| **Defect ID** | BUG-015 |
+| **Title** | Favorite restaurants icon color incorrect |
+| **Module** | UI/UX |
+| **Severity** | Low |
+| **Priority** | P4 - Low |
+| **Status** | Open |
+| **Reported By** | Tester C |
+| **Reported Date** | 2025-11-09 |
+| **Assigned To** | UI Team |
+| **Environment** | All platforms |
+| **Build Version** | 1.0.15 |
+| **Description** | Heart icon for favorite restaurants appears in wrong color (green instead of red). |
+| **Steps to Reproduce** | 1. Mark restaurant as favorite<br>2. Observe heart icon color |
+| **Expected Result** | Red colored heart icon |
+| **Actual Result** | Green colored heart icon |
+| **Attachments** | Icon_color_issue.png |
+| **Root Cause** | CSS color value incorrect |
+| **Fix ETA** | 2025-11-15 |
+
+---
+
+## DEFECT METRICS AND ANALYSIS
+
+### Defects by Severity
+
+| Severity | Count | Percentage |
+|----------|-------|------------|
+| Critical | 3 | 20% |
+| High | 5 | 33.3% |
+| Medium | 4 | 26.7% |
+| Low | 3 | 20% |
+
+### Defects by Module
+
+| Module | Count |
+|--------|-------|
+| Authentication | 2 |
+| Shopping Cart | 2 |
+| Payment | 1 |
+| Order Tracking | 1 |
+| Notifications | 1 |
+| Search | 1 |
+| Promotions | 1 |
+| UI/UX | 3 |
+| Order Management | 1 |
+| Reviews | 1 |
+| Content | 1 |
+
+### Defect Aging Report
+
+| Defect ID | Days Open | Status |
+|-----------|-----------|--------|
+| BUG-003 | 6 days | Fixed |
+| BUG-014 | 4 days | Closed |
+| BUG-001 | 4 days | In Progress |
+| BUG-005 | 4 days | In Progress |
+| BUG-002 | 3 days | Open |
+| BUG-004 | 3 days | Open |
+| BUG-006 | 2 days | Open |
+| BUG-007 | 3 days | In Progress |
+| BUG-008 | 1 day | Open |
+| BUG-009 | 2 days | Open |
+| BUG-010 | 1 day | Open |
+| BUG-011 | 3 days | In Progress |
+| BUG-012 | 0 days | Open |
+| BUG-013 | 1 day | Open |
+| BUG-015 | 0 days | Open |
+
+---
+
+## RECOMMENDATIONS
+
+1. **Priority Action Items:**
+   - Fix all 3 critical defects immediately (BUG-001, BUG-002, BUG-003)
+   - BUG-003 is already fixed - verify in next build
+   - Focus on payment and cart functionality as these are revenue-impacting
+
+2. **Resource Allocation:**
+   - Assign additional developers to critical and high-priority defects
+   - Backend team needs to prioritize authentication and payment issues
+
+3. **Testing Focus:**
+   - Increase regression testing for payment module
+   - Add more test cases for cart calculations
+   - Implement automated tests for login functionality
+
+4. **Quality Metrics:**
+   - Current defect density: 15 defects in 1.0.15 build
+   - Target: Reduce to <5 defects for production release
+   - 53.3% defects still open - needs attention
+
+---
+
+## SIGN-OFF
+
+**Prepared By:** QA Team Lead  
+**Reviewed By:** Test Director  
+**Date:** November 09, 2025  
+**Next Review:** November 12, 2025
