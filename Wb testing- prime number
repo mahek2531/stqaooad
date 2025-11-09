@@ -1,0 +1,321 @@
+PRIME NUMBER CHECK
+
+
+
+Algorithm
+
+
+
+START
+
+INPUT number
+
+IF number <= 1 THEN
+
+    PRINT "Not Prime"
+
+    GOTO STOP
+
+END IF
+
+IF number == 2 THEN
+
+    PRINT "Prime"
+
+    GOTO STOP
+
+END IF
+
+IF number % 2 == 0 THEN
+
+    PRINT "Not Prime"
+
+    GOTO STOP
+
+END IF
+
+SET i = 3
+
+WHILE i * i <= number DO
+
+    IF number % i == 0 THEN
+
+        PRINT "Not Prime"
+
+        GOTO STOP
+
+    END IF
+
+    i = i + 2
+
+END WHILE
+
+PRINT "Prime"
+
+STOP
+
+ Flow Chart
+
+
+
+            [START]
+
+               |
+
+               v
+
+        [Input number]
+
+               |
+
+               v
+
+        <number <= 1?>
+
+           /      \
+
+         YES       NO
+
+          |         |
+
+          v         v
+
+    [Not Prime] <number == 2?>
+
+          |       /        \
+
+          |     YES         NO
+
+          |      |           |
+
+          |      v           v
+
+          | [Prime]    <number % 2 == 0?>
+
+          |      |         /        \
+
+          |      |       YES         NO
+
+          |      |        |           |
+
+          |      |        v           v
+
+          |      |   [Not Prime]  [i = 3]
+
+          |      |        |           |
+
+          |      |        |           v
+
+          |      |        |    <i*i <= number?>
+
+          |      |        |       /         \
+
+          |      |        |     YES          NO
+
+          |      |        |      |            |
+
+          |      |        |      v            v
+
+          |      |        | <number % i == 0?> [Prime]
+
+          |      |        |   /        \        |
+
+          |      |        | YES         NO      |
+
+          |      |        |  |          |       |
+
+          |      |        |  v          v       |
+
+          |      |        | [Not Prime] [i=i+2] |
+
+          |      |        |  |          |       |
+
+          |      |        |  |          |       |
+
+          \------+--------+--+----------+-------/
+
+                 |
+
+                 v
+
+              [STOP]
+
+Control Flow Diagram (CFD)
+
+
+
+Nodes:
+
+1. Start
+
+2. Input number
+
+3. Check number <= 1
+
+4. Print "Not Prime" (for <= 1)
+
+5. Check number == 2
+
+6. Print "Prime" (for 2)
+
+7. Check number % 2 == 0
+
+8. Print "Not Prime" (for even)
+
+9. i = 3
+
+10. Check i * i <= number
+
+11. Check number % i == 0
+
+12. Print "Not Prime" (divisible)
+
+13. i = i + 2
+
+14. Print "Prime"
+
+15. Stop
+
+
+
+Edges:
+
+1 → 2
+
+2 → 3
+
+3 → 4 (True)
+
+3 → 5 (False)
+
+4 → 15
+
+5 → 6 (True)
+
+5 → 7 (False)
+
+6 → 15
+
+7 → 8 (True)
+
+7 → 9 (False)
+
+8 → 15
+
+9 → 10
+
+10 → 11 (True)
+
+10 → 14 (False)
+
+11 → 12 (True)
+
+11 → 13 (False)
+
+12 → 15
+
+13 → 10
+
+14 → 15
+
+Cyclomatic Complexity Calculation
+
+
+
+Method 1: Using Formula V(G) = E - N + 2
+
+- Edges (E) = 17
+
+- Nodes (N) = 15
+
+- V(G) = 17 - 15 + 2 = 4
+
+
+
+Method 2: Using Decision Points V(G) = D + 1
+
+- Decision points (D) = 5
+
+- V(G) = 5 + 1 = 6
+
+ Independent Paths
+
+
+
+1. Path 1: 1 → 2 → 3 → 4 → 15 (number <= 1)
+
+   - Test Case: number = 0
+
+   - Expected Output: "Not Prime"
+
+
+
+2. Path 2: 1 → 2 → 3 → 5 → 6 → 15 (number == 2)
+
+   - Test Case: number = 2
+
+   - Expected Output: "Prime"
+
+
+
+3. Path 3: 1 → 2 → 3 → 5 → 7 → 8 → 15 (even number)
+
+   - Test Case: number = 4
+
+   - Expected Output: "Not Prime"
+
+
+
+4. Path 4: 1 → 2 → 3 → 5 → 7 → 9 → 10 → 11 → 12 → 15 (divisible by odd)
+
+   - Test Case: number = 9
+
+   - Expected Output: "Not Prime"
+
+
+
+5. Path 5: 1 → 2 → 3 → 5 → 7 → 9 → 10 → 11 → 13 → 10 → 14 → 15 (prime)
+
+   - Test Case: number = 7
+
+   - Expected Output: "Prime"
+
+
+
+6. Path 6: 1 → 2 → 3 → 5 → 7 → 9 → 10 → 14 → 15 (small prime)
+
+   - Test Case: number = 3
+
+   - Expected Output: "Prime"
+
+
+
+Test Cases
+
+
+
+| Test Case ID | Input (number) | Expected Output | Path Covered | Reason |
+
+| TC1 | 0 | Not Prime | Path 1 | number <= 1 |
+
+| TC2 | 1 | Not Prime | Path 1 | number <= 1 |
+
+| TC3 | -5 | Not Prime | Path 1 | Negative |
+
+| TC4 | 2 | Prime | Path 2 | Only even prime |
+
+| TC5 | 4 | Not Prime | Path 3 | Even composite |
+
+| TC6 | 9 | Not Prime | Path 4 | Odd composite (3²) |
+
+| TC7 | 15 | Not Prime | Path 4 | Odd composite |
+
+| TC8 | 7 | Prime | Path 5 | Odd prime |
+
+| TC9 | 11 | Prime | Path 5 | Odd prime |
+
+| TC10 | 3 | Prime | Path 6 | Smallest odd prime |
+
+| TC11 | 17 | Prime | Path 5 | Larger prime |
+
+| TC12 | 25 | Not Prime | Path 4 | Perfect square |
