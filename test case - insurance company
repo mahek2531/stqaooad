@@ -1,0 +1,369 @@
+TEST CASES: INSURANCE COMPANY E-COMMERCE WEBSITE
+PROJECT DETAILS
+Website: Insurance Company E-Commerce Portal
+Module: Insurance Policy Purchase
+Prepared By: QA Team
+Date: November 2025
+
+TEST CASE 1: USER REGISTRATION
+Test Case ID: TC_REG_001
+Test Scenario: Verify user registration with valid details
+Priority: High
+Severity: Critical
+Pre-conditions:
+•	User is on registration page
+•	User does not have existing account
+Test Steps:
+1.	Navigate to registration page
+2.	Enter valid first name
+3.	Enter valid last name
+4.	Enter valid email address
+5.	Enter valid phone number
+6.	Create strong password
+7.	Confirm password
+8.	Accept terms and conditions
+9.	Click Register button
+Expected Result:
+•	Registration successful
+•	User redirected to dashboard
+•	Welcome email sent
+•	User account created in database
+Post-conditions: User account is active and can login
+
+TEST CASE 2: USER LOGIN
+Test Case ID: TC_LOGIN_001
+Test Scenario: Verify login with valid credentials
+Priority: High
+Severity: Critical
+Pre-conditions:
+•	User has registered account
+•	User is on login page
+Test Steps:
+1.	Enter registered email address
+2.	Enter correct password
+3.	Click Login button
+Expected Result:
+•	Login successful
+•	User redirected to dashboard
+•	Session created
+•	Last login timestamp updated
+
+TEST CASE 3: USER LOGIN - INVALID CREDENTIALS
+Test Case ID: TC_LOGIN_002
+Test Scenario: Verify login with invalid credentials
+Priority: High
+Severity: High
+Test Steps:
+1.	Enter registered email
+2.	Enter incorrect password
+3.	Click Login button
+Expected Result:
+•	Login fails
+•	Error message displayed: "Invalid email or password"
+•	User remains on login page
+•	Login attempt logged
+
+TEST CASE 4: BROWSE INSURANCE POLICIES
+Test Case ID: TC_BROWSE_001
+Test Scenario: View available insurance policies
+Priority: Medium
+Severity: Medium
+Pre-conditions: User is logged in
+Test Steps:
+1.	Click on "Insurance Plans" menu
+2.	View list of available policies
+3.	Apply filter by policy type (Life, Health, Vehicle, Travel)
+4.	Sort by premium amount
+Expected Result:
+•	All available policies displayed
+•	Filters work correctly
+•	Sorting functions properly
+•	Policy details clearly visible
+
+TEST CASE 5: VIEW POLICY DETAILS
+Test Case ID: TC_POLICY_001
+Test Scenario: View detailed information of specific policy
+Priority: High
+Severity: Medium
+Pre-conditions:
+•	User is logged in
+•	Policies are displayed
+Test Steps:
+1.	Click on specific policy card
+2.	View policy details page
+Expected Result:
+•	Policy details page opens
+•	Coverage details displayed
+•	Premium amount shown
+•	Terms and conditions available
+•	Benefits listed clearly
+•	Exclusions mentioned
+
+TEST CASE 6: GET INSURANCE QUOTE
+Test Case ID: TC_QUOTE_001
+Test Scenario: Calculate insurance premium quote
+Priority: High
+Severity: High
+Pre-conditions: User is on quote calculation page
+Test Steps:
+1.	Select insurance type (e.g., Health Insurance)
+2.	Enter age: 35
+3.	Select coverage amount: 500,000
+4.	Enter medical history details
+5.	Select add-ons if any
+6.	Click "Calculate Premium"
+Expected Result:
+•	Premium calculated correctly
+•	Quote displayed with breakdown
+•	Coverage details shown
+•	Option to proceed to purchase
+
+TEST CASE 7: ADD POLICY TO CART
+Test Case ID: TC_CART_001
+Test Scenario: Add insurance policy to cart
+Priority: High
+Severity: High
+Pre-conditions:
+•	User has calculated quote
+•	User is logged in
+Test Steps:
+1.	Review quote details
+2.	Click "Add to Cart" button
+3.	View cart
+Expected Result:
+•	Policy added to cart successfully
+•	Cart icon shows item count
+•	Cart displays policy details
+•	Premium amount shown correctly
+
+TEST CASE 8: PROCEED TO CHECKOUT
+Test Case ID: TC_CHECKOUT_001
+Test Scenario: Verify checkout process
+Priority: Critical
+Severity: Critical
+Pre-conditions:
+•	Policy is in cart
+•	User is logged in
+Test Steps:
+1.	Click "Proceed to Checkout"
+2.	Review policy summary
+3.	Enter nominee details
+4.	Enter beneficiary information
+5.	Upload required documents (ID proof, address proof)
+6.	Review all entered information
+7.	Click "Continue to Payment"
+Expected Result:
+•	All fields validated
+•	Documents uploaded successfully
+•	Summary displayed correctly
+•	User moved to payment page
+
+TEST CASE 9: PAYMENT PROCESSING - CREDIT CARD
+Test Case ID: TC_PAY_001
+Test Scenario: Complete payment using credit card
+Priority: Critical
+Severity: Critical
+Pre-conditions:
+•	User is on payment page
+•	Total amount is displayed
+Test Steps:
+1.	Select "Credit Card" as payment method
+2.	Enter card number: 4111 1111 1111 1111
+3.	Enter cardholder name
+4.	Enter expiry date: 12/25
+5.	Enter CVV: 123
+6.	Click "Pay Now"
+Expected Result:
+•	Payment processed successfully
+•	Order confirmation displayed
+•	Policy number generated
+•	Confirmation email sent
+•	Policy documents sent to email
+•	Transaction recorded in database
+
+TEST CASE 10: PAYMENT FAILURE HANDLING
+Test Case ID: TC_PAY_002
+Test Scenario: Handle payment failure scenario
+Priority: High
+Severity: High
+Test Steps:
+1.	Enter invalid card details
+2.	Click "Pay Now"
+Expected Result:
+•	Payment fails gracefully
+•	Error message displayed: "Payment failed. Please try again"
+•	User can retry payment
+•	Order status remains pending
+•	No policy generated
+
+TEST CASE 11: VIEW PURCHASED POLICIES
+Test Case ID: TC_DASHBOARD_001
+Test Scenario: View purchased policies in user dashboard
+Priority: Medium
+Severity: Medium
+Pre-conditions:
+•	User has purchased at least one policy
+•	User is logged in
+Test Steps:
+1.	Navigate to "My Policies" section
+2.	View list of purchased policies
+Expected Result:
+•	All purchased policies displayed
+•	Policy numbers shown
+•	Coverage details visible
+•	Download policy document option available
+•	Renewal date displayed
+
+TEST CASE 12: DOWNLOAD POLICY DOCUMENT
+Test Case ID: TC_DOC_001
+Test Scenario: Download policy document PDF
+Priority: Medium
+Severity: Medium
+Pre-conditions:
+•	User has active policy
+•	User is logged in
+Test Steps:
+1.	Go to "My Policies"
+2.	Select specific policy
+3.	Click "Download Policy Document"
+Expected Result:
+•	PDF file downloaded
+•	Document contains all policy details
+•	Document is properly formatted
+•	File name is meaningful (PolicyNo_Date.pdf)
+
+TEST CASE 13: SEARCH FUNCTIONALITY
+Test Case ID: TC_SEARCH_001
+Test Scenario: Search for specific insurance policy
+Priority: Medium
+Severity: Low
+Pre-conditions: User is on homepage
+Test Steps:
+1.	Enter "Health Insurance" in search box
+2.	Click search button
+Expected Result:
+•	Search results displayed
+•	Relevant health insurance policies shown
+•	Results are accurate
+•	"No results" message if nothing found
+
+TEST CASE 14: FILTER POLICIES BY PRICE RANGE
+Test Case ID: TC_FILTER_001
+Test Scenario: Filter policies based on premium range
+Priority: Medium
+Severity: Low
+Test Steps:
+1.	Navigate to policies page
+2.	Set minimum premium: 5,000 Rs
+3.	Set maximum premium: 15,000 Rs
+4.	Apply filter
+Expected Result:
+•	Only policies within range displayed
+•	Filter count updated
+•	Results accurate
+
+TEST CASE 15: LOGOUT FUNCTIONALITY
+Test Case ID: TC_LOGOUT_001
+Test Scenario: Verify user logout
+Priority: Medium
+Severity: Medium
+Pre-conditions: User is logged in
+Test Steps:
+1.	Click on profile menu
+2.	Click "Logout" button
+Expected Result:
+•	User logged out successfully
+•	Session terminated
+•	User redirected to homepage
+•	Cannot access protected pages without login
+
+TEST CASE 16: PASSWORD RESET
+Test Case ID: TC_PWD_001
+Test Scenario: Reset forgotten password
+Priority: High
+Severity: High
+Pre-conditions: User has registered account
+Test Steps:
+1.	Click "Forgot Password"
+2.	Enter registered email
+3.	Click "Send Reset Link"
+4.	Check email
+5.	Click reset link
+6.	Enter new password
+7.	Confirm new password
+8.	Submit
+Expected Result:
+•	Password reset email sent
+•	Reset link valid for 24 hours
+•	Password updated successfully
+•	Can login with new password
+•	Old password no longer works
+
+TEST CASE 17: CONTACT SUPPORT
+Test Case ID: TC_SUP_001
+Test Scenario: Submit support request
+Priority: Low
+Severity: Low
+Test Steps:
+1.	Navigate to "Contact Us"
+2.	Fill support form with query
+3.	Submit
+Expected Result:
+•	Form submitted successfully
+•	Confirmation message displayed
+•	Support ticket created
+•	Acknowledgment email sent
+
+TEST CASE 18: RESPONSIVE DESIGN - MOBILE
+Test Case ID: TC_UI_001
+Test Scenario: Verify website on mobile devices
+Priority: High
+Severity: Medium
+Test Steps:
+1.	Open website on mobile browser (320x568)
+2.	Navigate through all pages
+3.	Test all functionalities
+Expected Result:
+•	Layout adjusts properly
+•	All buttons accessible
+•	Text readable
+•	Images scale correctly
+•	Navigation menu works
+
+TEST CASE 19: CLAIM SUBMISSION
+Test Case ID: TC_CLAIM_001
+Test Scenario: Submit insurance claim
+Priority: High
+Severity: Critical
+Pre-conditions:
+•	User has active policy
+•	User is logged in
+Test Steps:
+1.	Navigate to "File Claim"
+2.	Select policy
+3.	Enter claim details
+4.	Upload supporting documents
+5.	Submit claim
+Expected Result:
+•	Claim submitted successfully
+•	Claim reference number generated
+•	Status shows "Under Review"
+•	Confirmation email sent
+•	Documents uploaded properly
+
+TEST CASE 20: SESSION TIMEOUT
+Test Case ID: TC_SEC_001
+Test Scenario: Verify session timeout after inactivity
+Priority: Medium
+Severity: Medium
+Pre-conditions: User is logged in
+Test Steps:
+1.	Login to account
+2.	Remain inactive for 30 minutes
+3.	Try to perform any action
+Expected Result:
+•	Session expires after 30 minutes
+•	User redirected to login page
+•	Warning message: "Session expired. Please login again"
+•	User data not lost if in cart
+
