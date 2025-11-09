@@ -1,0 +1,154 @@
+ODD OR EVEN NUMBER
+
+Algorithm
+
+
+
+START
+
+INPUT number
+
+IF number % 2 == 0 THEN
+
+    PRINT "Even"
+
+ELSE
+
+    PRINT "Odd"
+
+END IF
+
+STOP
+
+ Flow Chart
+
+[START]
+
+           |
+
+           v
+
+    [Input number]
+
+           |
+
+           v
+
+    <number % 2 == 0?>
+
+       /        \
+
+     YES         NO
+
+      |           |
+
+      v           v
+
+  [Print "Even"] [Print "Odd"]
+
+      |           |
+
+      \-----------/
+
+           |
+
+           v
+
+        [STOP]
+
+ Control Flow Diagram (CFD)
+
+
+
+Nodes:
+
+1. Start
+
+2. Input number
+
+3. Check number % 2 == 0
+
+4. Print "Even"
+
+5. Print "Odd"
+
+6. Stop
+
+
+
+Edges:
+
+1 → 2
+
+2 → 3
+
+3 → 4 (True)
+
+3 → 5 (False)
+
+4 → 6
+
+5 → 6
+
+ Cyclomatic Complexity Calculation
+
+
+
+Method 1: Using Formula V(G) = E - N + 2
+
+- Edges (E) = 6
+
+- Nodes (N) = 6
+
+- V(G) = 6 - 6 + 2 = 2
+
+
+
+Method 2: Using Decision Points V(G) = D + 1
+
+- Decision points (D) = 1
+
+- V(G) = 1 + 1 = 2
+
+
+
+ Independent Paths
+
+
+
+1. Path 1: 1 → 2 → 3 → 4 → 6 (number is even)
+
+   - Test Case: number = 10
+
+   - Expected Output: "Even"
+
+
+
+2. Path 2: 1 → 2 → 3 → 5 → 6 (number is odd)
+
+   - Test Case: number = 7
+
+   - Expected Output: "Odd"
+
+
+
+ Test Cases
+
+
+
+| Test Case ID | Input (number) | Expected Output | Path Covered |
+
+| TC1 | 10 | Even | Path 1 |
+
+| TC2 | 7 | Odd | Path 2 |
+
+| TC3 | 0 | Even | Boundary |
+
+| TC4 | -4 | Even | Negative Even |
+
+| TC5 | -5 | Odd | Negative Odd |
+
+| TC6 | 2 | Even | Smallest Even |
+
+| TC7 | 1 | Odd | Smallest Odd |
+
