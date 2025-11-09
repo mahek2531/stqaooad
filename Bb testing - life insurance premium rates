@@ -1,0 +1,136 @@
+Problem Statement
+
+Life Insurance Premium rates based on age:
+
+
+
+| Age Group | Premium (Rs) |
+
+| Under 35 | 2000 |
+
+| 35-59 | 5000 |
+
+| Above 60 | 10000 |
+
+
+
+Equivalence Classes
+
+
+
+Valid Classes:
+
+- VC1: Age 0 to 34 → Premium 2000 Rs
+
+- VC2: Age 35 to 59 → Premium 5000 Rs
+
+- VC3: Age 60 and above → Premium 10000 Rs
+
+
+
+Invalid Classes:
+
+- IC1: Age < 0 → Invalid (Negative age)
+
+- IC2: Age > 120 → Invalid (Unrealistic age)
+
+- IC3: Non-numeric input → Invalid
+
+
+
+ Boundary Value Analysis
+
+
+
+Boundaries Identified:
+
+- Upper boundary of VC1: 34 years
+
+- Lower boundary of VC2: 35 years
+
+- Upper boundary of VC2: 59 years
+
+- Lower boundary of VC3: 60 years
+
+
+
+Boundary Values:
+
+- Just below 35: 34 years
+
+- At boundary 35: 35 years
+
+- Just above 35: 36 years
+
+- Just below 60: 59 years
+
+- At boundary 60: 60 years
+
+- Just above 60: 61 years
+
+Test Cases
+
+
+
+| Test Case ID | Age (years) | Expected Premium (Rs) | Test Type | Remarks |
+
+| TC1 | -5 | Error/Invalid | Boundary | Negative age |
+
+| TC2 | 0 | 2000 | BVA | Newborn |
+
+| TC3 | 1 | 2000 | EP | Child |
+
+| TC4 | 18 | 2000 | EP | Young adult |
+
+| TC5 | 25 | 2000 | EP | Middle of VC1 |
+
+| TC6 | 33 | 2000 | BVA | Just below boundary |
+
+| TC7 | 34 | 2000 | BVA | Upper boundary VC1 |
+
+| TC8 | 35 | 5000 | BVA | Lower boundary VC2 |
+
+| TC9 | 36 | 5000 | BVA | Just above boundary |
+
+| TC10 | 45 | 5000 | EP | Middle of VC2 |
+
+| TC11 | 50 | 5000 | EP | Middle of VC2 |
+
+| TC12 | 58 | 5000 | BVA | Just below boundary |
+
+| TC13 | 59 | 5000 | BVA | Upper boundary VC2 |
+
+| TC14 | 60 | 10000 | BVA | Lower boundary VC3 |
+
+| TC15 | 61 | 10000 | BVA | Just above boundary |
+
+| TC16 | 70 | 10000 | EP | Senior citizen |
+
+| TC17 | 80 | 10000 | EP | Very senior |
+
+| TC18 | 100 | 10000 | EP | Centenarian |
+
+| TC19 | 150 | Error/Invalid | Boundary | Unrealistic age |
+
+| TC20 | ABC | Error/Invalid | EP | Non-numeric |
+
+
+
+ Decision Table
+
+
+
+| Condition | Rule 1 | Rule 2 | Rule 3 | Rule 4 |
+
+
+
+| Age < 0 | Yes | No | No | No |
+
+| 0 ≤ Age < 35 | No | Yes | No | No |
+
+| 35 ≤ Age < 60 | No | No | Yes | No |
+
+| Age ≥ 60 | No | No | No | Yes |
+
+| Action | Invalid | 2000 Rs | 5000 Rs | 10000 Rs |
+
